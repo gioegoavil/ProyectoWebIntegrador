@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Nuevolab</title>
+<style>
+       body {
+            background-color:rgb(215, 255, 255); /* Cambia este valor al color de fondo que desees */
+        }
+    </style>
+</head>
+<body>
+ <nav class = "navbar navbar-expand-md bg-dark navbar-dark">
+          <a class="navbar-brand" th:href="@{/index}">Index</a>
+          <div class ="collapse navbar-collapse" id="collapsibleNavbar">
+               <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link"
+                         th:href="@{/medicamento}">Medicamentos</a></li>
+               </ul>
+               <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link"
+                         th:href="@{/laboratorio}">Laboratorios</a></li>
+               </ul>             
+          </div>
+     </nav>
+      <br>
+     <div class="container">
+          <div class="row">
+             <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                 <h1 class="text-center">Agregar Laboratorio</h1>
+                 <div class="card-body">
+                    <form th:action="@{/laboratorio}" th:object="${laboratorio}" method="POST">
+                         <div class="form-group">
+                              <label>Código: </label>
+                              <input type="text" name="codigo"  th:field="*{codigo}" class="form-control" placeholder="Código" required>
+                         </div>
+
+                         
+                         <div class="form-group">
+                              <label>Nombre : </label>
+                              <input type="text" name="nombrelab"  th:field="*{nombrelab}" class="form-control" placeholder="Nombre" required>
+                         </div>
+
+                         
+                         <div class="form-group">
+                              <label>Precio Genérico: </label>
+                              <input type="text" name="preciog"  th:field="*{preciog}" class="form-control" placeholder="Precio genérico" required>
+                         </div>     
+                           <div class="form-group">
+                              <label>Precio de Marca: </label>
+                              <input type="text" name="preciom"  th:field="*{preciom}" class="form-control" placeholder="Precio de marca" required>
+                         </div>   
+                         
+                         <div class="box-footer">
+                              <button class="btn btn-success">Guardar</button>
+                         </div>
+                         
+                    </form>
+                 </div>
+             </div>
+          </div>
+
+     </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+<meta charset="ISO-8859-1">
+<title>LaboratoriosMinsa</title>
+<style>
+       body {
+            background-color:rgb(215, 255, 255); /* Cambia este valor al color de fondo que desees */
+        }
+    </style>
+</head>
+
+<body>
+	
+	<nav class = "navbar navbar-expand-md bg-dark navbar-dark">
+          <a class="navbar-brand" th:href="@{/index}">Index</a>
+          <div class ="collapse navbar-collapse" id="collapsibleNavbar">
+               <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link"
+                         th:href="@{/medicamento}">Medicamentos</a></li>
+               </ul>
+               <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link"
+                         th:href="@{/laboratorio}">Laboratorios</a></li>
+               </ul>             
+          </div>
+     </nav>
+ <h1 class="text-center">LISTA DE LABORATORIOS DISPONIBLES</h1>
+<div class ="container">
+         <div class = "row">
+      </div>
+      <div class = "row">
+          <div class="col-lg-3">
+               <a th:href="@{/laboratorio/nuevo}" class="btn btn-primary btn-sm mb3">NUEVO LABORATORIO</a>
+          </div>
+      </div>
+      <br>
+      <table class = "table table-striped table-bordered">
+           <thead class = "table-dark">
+            <tr>
+               
+                <th>Codigo</th>
+                <th>Laboratorio</th>
+                <th>Precio Genérico</th>
+                <th>Precio de Marca</th>
+                <th>Acciones</th>
+                </tr>
+        </thead>
+        <tbody>
+             
+				 <tr th:each="laboratorio : ${laboratorio}">
+                  <td th:text="${laboratorio.codigo}">Codigo</td>
+                  <td th:text="${laboratorio.nombrelab}" >Nombre</td>
+                  <td th:text="${laboratorio.preciog}">Fecha de Vencimiento</td>
+                  <td th:text="${laboratorio.preciom}">Stock</td>
+                  
+                  <td>
+                    <a th:href="@{/laboratorio/editar/{id}(id=${laboratorio.id})}" class="btn btn-info">Editar</a>
+                    <a th:href="@{/laboratorio/{id}(id=${laboratorio.id})}" class="btn btn-danger">Eliminar</a>
+                                   
+                  </td>
+             </tr>
+         </tbody>
+    </table>
+</div>
+</body>
+</html>
